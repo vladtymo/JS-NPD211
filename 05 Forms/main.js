@@ -17,6 +17,7 @@ class Product {
         this.name = name;
         this.price = price < 0 ? 0 : price; // validation
         this.status = status;
+        this.statusName = this.status ? 'In Stock' : 'Out of Stock';
         this.id = Product.number++;
     }
 
@@ -24,18 +25,24 @@ class Product {
         Product.number = 1000;
     }
 
-    get statusName() {
-        return this.status ? 'In Stock' : 'Out of Stock';
-    }
+    // get statusName() {
+    //     return this.status ? 'In Stock' : 'Out of Stock';
+    // }
 
     addItemToTable() {
         // add item to table
-        tableBody.innerHTML += `<tr>
-                                    <td>${this.id}</td>
-                                    <td>${this.name}</td>
-                                    <td>${this.price}$</td>
-                                    <td>${this.statusName}</td>
-                                </tr>`;
+
+        var source = document.getElementById('rowTemplate').innerHTML;
+        var template = Handlebars.compile(source);
+        var html = template(this);
+
+        tableBody.innerHTML += html;
+        //                        `<tr>
+        //                             <td>${this.id}</td>
+        //                             <td>${this.name}</td>
+        //                             <td>${this.price}$</td>
+        //                             <td>${this.statusName}</td>
+        //                         </tr>`;
     }
 };
 

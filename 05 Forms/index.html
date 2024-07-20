@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forms</title>
     <link rel="stylesheet" href="./style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
 </head>
 
 <body>
@@ -68,6 +69,16 @@
     <div class="mt">
         <button id="clearBtn" type="button">Clear All</button>
     </div>
+
+    <!-- HTML шаблон рядка в таблиці -->
+    <script id="rowTemplate" type="text/x-handlebars-template">
+        <tr>
+            <td>{{id}}</td>
+            <td>{{name}}</td>
+            <td>{{price}}$</td>
+            <td>{{statusName}}</td>
+        </tr>
+    </script>
 
     <script src="./main.js"></script>
 </body>
